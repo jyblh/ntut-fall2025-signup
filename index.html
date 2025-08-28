@@ -2,79 +2,112 @@
 <html lang="zh-Hant">
 
 <head>
-  <meta charset="UTF-8">
-  <title>報名已結束</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 春季企業報名｜北科大</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Noto Sans TC', sans-serif;
-      background-color: #f8e8d3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      color: #333;
+      background: #f5eceb;
+      color: #b64a41;
+      text-align: center;
+      padding: 40px 20px;
+      margin: 0;
     }
 
     .container {
-      background: #fff;
-      padding: 40px 60px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      max-width: 600px;
+      max-width: 500px;
+      margin: auto;
     }
 
-    .banner {
-      width: 100%;
-      max-width: 200px;
-      /* 原本是 360px，這裡調小 */
-      height: auto;
+    img.character {
+      width: 160px;
+      max-width: 50vw;
       margin-bottom: 20px;
-      border-radius: 8px;
     }
 
     h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      color: #156e42;
+      font-size: 6vw;
       font-weight: 700;
+      color: #a74646;
+      margin: 10px 0;
     }
 
     p {
-      font-size: 18px;
-      line-height: 1.6;
+      font-size: 4.5vw;
+      margin: 6px 0 24px;
     }
 
-    .btn-back {
-      margin-top: 30px;
+    .countdown {
+      font-size: 5vw;
+      font-weight: bold;
+      color: #a74646;
+      margin-bottom: 30px;
+    }
+
+    .btn {
       display: inline-block;
-      padding: 10px 20px;
-      background-color: #555;
+      background: #f5a455;
       color: white;
+      padding: 12px 20px;
       border-radius: 8px;
       text-decoration: none;
-      font-size: 16px;
+      font-weight: bold;
+      font-size: 4vw;
     }
 
-    .btn-back:hover {
-      background-color: #333;
+    .btn:hover {
+      background: #f7f0eb;
+    }
+
+    @media (min-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      p,
+      .btn {
+        font-size: 18px;
+      }
+
+      .countdown {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <!-- 這裡替換成你的圖片連結 -->
-    <img class="banner" src="IMG_3019.png" alt="活動圖片">
-
-    <h1>報名已結束</h1>
-    <p>感謝您的關注，本次活動的報名已於 <strong>2025年7月25日</strong> 截止。</p>
-    <p>若有其他活動或相關資訊，請密切關注我們的官網或聯絡窗口。</p>
-    <a class="btn-back" href="https://rnd.ntut.edu.tw/p/412-1042-18113.php?Lang=zh-tw">返回首頁</a>
+    <img class="character" src="IMG_3019.PNG" alt="里歐角色圖" />
+    <h1>2026 春季企業報名尚未開放</h1>
+    <p>預計開放時間：<strong>2025 年 9 月 15 日 中午 12:00</strong></p>
+    <div class="countdown" id="countdown">⏳ 倒數計時中...</div>
+    <a class="btn"
+      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=2025秋季企業報名開放&dates=20250915T040000Z/20251017T160000Z&details=北科大2025秋季企業報名將於9月15日中午12點正式開放，截止時間為10月17日晚上24點，請準時填寫資料！"
+      target="_blank">📅 加入行事曆提醒</a>
   </div>
+  <script>
+    const countdownElement = document.getElementById("countdown");
+    // ✅ 改成 9/15 中午 12:00
+    const targetDate = new Date("2025-09-15T12:00:00+08:00").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance <= 0) {
+        countdownElement.innerHTML = "✅ 報名已開放！";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownElement.innerHTML = `還有 ${days} 天 ${hours} 時 ${minutes} 分 ${seconds} 秒`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 
 </html>

@@ -82,16 +82,16 @@
   <div class="container">
     <img class="character" src="IMG_3019.PNG" alt="里歐角色圖" />
     <h1>2026 春季企業報名尚未開放</h1>
-    <p>預計開放時間：<strong>2025 年 9 月 15 日 中午 12:00</strong></p>
+    <p>預計開放時間：<strong>2025 年 9 月 15 日 上午 9:00</strong></p>
     <div class="countdown" id="countdown">⏳ 倒數計時中...</div>
     <a class="btn"
-      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=2025秋季企業報名開放&dates=20250915T040000Z/20251017T160000Z&details=北科大2025秋季企業報名將於9月15日上午9:00正式開放，截止時間為10月17日晚上24點，請準時填寫資料！"
+      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=2025秋季企業報名開放&dates=20250915T010000Z/20251017T160000Z&details=北科大2025秋季企業報名將於9月15日上午9:00正式開放，截止時間為10月17日晚上24點，請準時填寫資料！"
       target="_blank">📅 加入行事曆提醒</a>
   </div>
   <script>
     const countdownElement = document.getElementById("countdown");
-    // ✅ 改成 9/15 中午 12:00
-    const targetDate = new Date("2025-09-15T9:00:00+08:00").getTime();
+    // ✅ 改成 9/15 上午 9:00
+    const targetDate = new Date("2025-09-15T09:00:00+08:00").getTime();
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = targetDate - now;
@@ -111,4 +111,3 @@
 </body>
 
 </html>
-

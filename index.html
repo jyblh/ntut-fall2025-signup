@@ -1,113 +1,357 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
+<div style="max-width: 800px; margin: auto; margin-bottom: 32px; text-align: center;">
+    <img src="spring_0915.png" alt="活動公告"
+        style="width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+</div>
+
+<!-- 📢 公告區塊 -->
+<div
+    style="max-width: 800px; margin: auto; margin-bottom: 32px; padding: 20px; background: #f3e7ea; border-left: 6px solid #eb6f63; border-radius: 8px; font-family: 'Noto Sans TC', sans-serif; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+    <h2 style="margin-top: 0; color: #a14239;">📢 115臺北科大校園徵才活動報名須知</h2>
+    <p style="line-height: 1.7; color: #333;">
+        歡迎報名參加 <strong>115年校園徵才活動</strong>，請務必詳閱下列提醒事項：<br>
+        📅 <strong>企業說明會</strong>：3/2（一）– 3/14（五）<br>
+        🏢 <strong>就業博覽會</strong>：3/19（四）<br>
+        ❗<strong>請注意</strong>
+        <br>1.為求保障本校學生與校友之立場，本處先行調查各大廠商參展意願後，將由本校評審委員選定。<br>
+        2.本校說明會與博覽會恕不提供預先劃位與選場次服務，皆由校方評審委員安排，造成不便敬請見諒。<br>
+        🔗 若有疑問，請加入官方 LINE：<strong>@ntutjob</strong>
+    </p>
+    <a href="https://rnd.ntut.edu.tw/var/file/42/1042/img/699781388.pdf" target="_blank"
+        style="display: inline-block; padding: 10px 20px; background: #f5a455; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        📄 點我查看企劃書
+    </a>
+</div>
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026 春季企業報名｜北科大</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Noto Sans TC', sans-serif;
-      background: #f5eceb;
-      color: #b64a41;
-      text-align: center;
-      padding: 40px 20px;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <title>2026 北科大企業報名表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Noto Sans TC", sans-serif;
+            background-color: #f9f9f9;
+            padding: 40px 16px;
+        }
 
-    .container {
-      max-width: 500px;
-      margin: auto;
-    }
+        form {
+            background: #fff;
+            max-width: 800px;
+            margin: auto;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
 
-    img.character {
-      width: 160px;
-      max-width: 50vw;
-      margin-bottom: 20px;
-    }
+        h2 {
+            border-left: 5px solid #eb6f63;
+            padding-left: 12px;
+            color: #a14239;
+            margin-top: 32px;
+        }
 
-    h1 {
-      font-size: 6vw;
-      font-weight: 700;
-      color: #a74646;
-      margin: 10px 0;
-    }
+        label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: bold;
+        }
 
-    p {
-      font-size: 4.5vw;
-      margin: 6px 0 24px;
-    }
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
 
-    .countdown {
-      font-size: 5vw;
-      font-weight: bold;
-      color: #a74646;
-      margin-bottom: 30px;
-    }
+        button {
+            margin-top: 24px;
+            padding: 12px 24px;
+            background: #f5a455;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-    .btn {
-      display: inline-block;
-      background: #f5a455;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 4vw;
-    }
+        button:hover {
+            background: #e79cb3;
+        }
 
-    .btn:hover {
-      background: #f7f0eb;
-    }
+        .inline-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
 
-    @media (min-width: 600px) {
-      h1 {
-        font-size: 28px;
-      }
+        .inline-group label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: normal;
+            white-space: nowrap;
+        }
 
-      p,
-      .btn {
-        font-size: 18px;
-      }
+        .note {
+            font-size: 0.95em;
+            color: #666;
+        }
 
-      .countdown {
-        font-size: 24px;
-      }
-    }
-  </style>
+        .flowchart-box {
+            background: #f0f4f8;
+            border: 1px dashed #ccc;
+            padding: 16px;
+            margin: 16px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* ✅ 右上角 checkbox 區塊 */
+        .field-label-group {
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .field-label-group label:first-child {
+            font-weight: bold;
+            display: block;
+        }
+
+        .checkbox-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-weight: normal;
+            font-size: 0.95em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <img class="character" src="IMG_3019.PNG" alt="里歐角色圖" />
-    <h1>2026 春季企業報名尚未開放</h1>
-    <p>預計開放時間：<strong>2025 年 9 月 15 日 上午 9:00</strong></p>
-    <div class="countdown" id="countdown">⏳ 倒數計時中...</div>
-    <a class="btn"
-      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=2025秋季企業報名開放&dates=20250915T010000Z/20251017T160000Z&details=北科大2025秋季企業報名將於9月15日上午9:00正式開放，截止時間為10月17日晚上24點，請準時填寫資料！"
-      target="_blank">📅 加入行事曆提醒</a>
-  </div>
-  <script>
-    const countdownElement = document.getElementById("countdown");
-    // ✅ 改成 9/15 上午 9:00
-    const targetDate = new Date("2025-09-15T09:00:00+08:00").getTime();
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      if (distance <= 0) {
-        countdownElement.innerHTML = "✅ 報名已開放！";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElement.innerHTML = `還有 ${days} 天 ${hours} 時 ${minutes} 分 ${seconds} 秒`;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
+
+    <form id="signupForm" method="POST">
+        <h2>一、企業基本資料</h2>
+
+        <label for="totalJobs">預計提供職缺總數 *</label>
+        <input type="number" id="totalJobs" name="預計提供職缺總數" required>
+
+        <label for="company">企業名稱 *</label>
+        <input type="text" id="company" name="企業名稱" required>
+
+        <label for="company">企業簡稱 *</label>
+        <input type="text" id="company-re" name="企業簡稱" required placeholder="將用於徵才活動相關文宣/攤位頭卡，建議六字內且為大眾所知。">
+
+        <label for="id">企業統一編號 *</label>
+        <input type="text" id="id" name="企業統一編號" pattern="\d{8}" required>
+
+        <label for="address">企業聯絡地址 *</label>
+        <input type="text" id="address" name="企業聯絡地址" required>
+
+        <label for="contact">聯絡人姓名 *</label>
+        <input type="text" id="contact" name="聯絡人姓名" required>
+
+        <label for="phone">聯絡人電話 *</label>
+        <input type="tel" id="phone" name="聯絡人電話" required>
+
+        <label for="email">聯絡人信箱 *</label>
+        <input type="email" id="email" name="聯絡人信箱" required>
+
+        <div class="field-label-group">
+            <label for="receiptName">開立收據之企業名稱 *</label>
+            <label class="checkbox-overlay">
+                <input type="checkbox" id="sameAsCompany" onclick="copyCompanyName()"> 同企業名稱
+            </label>
+        </div>
+        <input type="text" id="receiptName" name="開立收據之企業名稱" required>
+
+        <div class="field-label-group">
+            <label for="receiptId">開立收據之統一編號 *</label>
+            <label class="checkbox-overlay">
+                <input type="checkbox" id="sameAsId" onclick="copyCompanyId()"> 同企業統編
+            </label>
+        </div>
+        <input type="text" id="receiptId" name="開立收據之統一編號" required>
+
+
+
+        <h2>二、參與項目</h2>
+
+        <div class="inline-group">
+            <label><input type="checkbox" name="參加說明會" value="✅"> 參加企業說明會$18,000【請於備註欄填寫無法參與日期】</label>
+            <label><input type="checkbox" name="參加博覽會" value="✅"> 參加就業博覽會</label>
+        </div>
+
+        <label>就業博覽會攤位區域（單選）</label>
+        <div class="inline-group">
+            <label><input type="radio" name="攤位區域" value="T字區" required> T字區$27,000</label>
+            <label><input type="radio" name="攤位區域" value="衛星區"> 衛星區$22,000</label>
+            <label><input type="radio" name="攤位區域" value="一大特區"> 一大特區$100,000</label>
+        </div>
+        <label for="booths">攤位數量（最多 2 攤）</label>
+        <select id="booths" name="攤位數量" required>
+            <option value="">請選擇</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+
+        <h2>預估金額試算</h2>
+        <p class="note">金額僅供參考，最終費用以主辦單位通知為準。</p>
+        <div id="priceBox" style="font-size: 1.2em; font-weight: bold; margin-bottom: 16px;">
+            總金額：NT$ 0
+        </div>
+
+        <h2>三、其他</h2>
+
+        <label for="vegan">活動餐點是否有素食需求？幾份？</label>
+        <input type="number" id="vegan" name="素食數量" min="0" placeholder="無則填 0">
+
+        <label for="related">是否有關係企業參與活動？</label>
+        <select id="related" name="是否有關係企業參與活動？">
+            <option value="">請選擇</option>
+            <option value="否">否</option>
+            <option value="是">是</option>
+        </select>
+
+        <label for="merge">若有關係企業，攤位是否相連並打通？</label>
+        <select id="merge" name="若有關係企業，攤位是否相連並打通？">
+            <option value="">請選擇</option>
+            <option value="無關係企業參與此活動">a. 無關係企業參與此活動</option>
+            <option value="不相連">b. 不相連</option>
+            <option value="相連不打通">c. 相連不打通</option>
+            <option value="相連且打通">d. 相連且打通</option>
+        </select>
+
+        <h2>四、備註</h2>
+        <label for="note">如有其他事項，請填寫：</label>
+        <textarea id="note" name="備註" rows="4"required placeholder="若有參與企業說明會，請填寫無法參與日期"></textarea>
+
+        <h2>五、注意事項</h2>
+        <div style="max-width: 800px; margin: auto; margin-bottom: 32px; text-align: center;">
+            <img src="流程圖.png" alt="流程圖"
+                style="width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+        <ul>
+            <li>📘 請詳閱企劃書</li>
+            <li>📆 12/5 繳費 & 企業名冊填寫截止</li>
+            <li>📩 10/28 活動公約回傳截止</li>
+        </ul>
+
+        <button type="submit">送出報名</button>
+
+        <input type="hidden" id="totalPrice" name="試算金額" value="0">
+    </form>
+
+    <div id="loadingMessage" style="display:none; text-align:center; color:#eb6f63; font-weight:bold; margin-top:20px;">
+        ⏳ 資料送出中，請稍候...
+    </div>
+
 </body>
+
+<script>
+    function copyCompanyName() {
+        const checkbox = document.getElementById('sameAsCompany');
+        const receiptName = document.getElementById('receiptName');
+        const company = document.getElementById('company');
+        receiptName.value = checkbox.checked ? company.value : '';
+    }
+
+    function copyCompanyId() {
+        const checkbox = document.getElementById('sameAsId');
+        const receiptId = document.getElementById('receiptId');
+        const companyId = document.getElementById('id');
+        receiptId.value = checkbox.checked ? companyId.value : '';
+    }
+</script>
+
+<script>
+    function calculatePrice() {
+        let total = 0;
+
+        const isBriefing = document.querySelector('input[name="參加說明會"]:checked') !== null;
+        const isExpo = document.querySelector('input[name="參加博覽會"]:checked') !== null;
+        const selectedArea = document.querySelector('input[name="攤位區域"]:checked');
+        const boothCount = parseInt(document.getElementById("booths").value || 0);
+
+        if (isBriefing) {
+            total += 18000;
+        }
+
+        if (isExpo && selectedArea && boothCount > 0) {
+            let unitPrice = 0;
+            switch (selectedArea.value) {
+                case "T字區":
+                    unitPrice = 27000;
+                    break;
+                case "衛星區":
+                    unitPrice = 22000;
+                    break;
+                case "一大特區":
+                    unitPrice = 100000;
+                    break;
+            }
+            total += unitPrice * boothCount;
+        }
+
+        document.getElementById("priceBox").innerText = `總金額：NT$ ${total.toLocaleString()}`;
+        document.getElementById("totalPrice").value = total.toString();
+    }
+
+    // 綁定事件
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('input[name="參加說明會"]').forEach(cb => cb.addEventListener("change", calculatePrice));
+        document.querySelectorAll('input[name="參加博覽會"]').forEach(cb => cb.addEventListener("change", calculatePrice));
+        document.querySelectorAll('input[name="攤位區域"]').forEach(rb => rb.addEventListener("change", calculatePrice));
+        document.getElementById("booths").addEventListener("change", calculatePrice);
+    });
+</script>
+
+<script>
+    document.getElementById("signupForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        const submitBtn = form.querySelector("button[type='submit']");
+        submitBtn.disabled = true;
+        document.getElementById("loadingMessage").style.display = "block";
+        submitBtn.style.opacity = "0.6";
+        submitBtn.textContent = "送出中...";
+
+        fetch("https://script.google.com/macros/s/AKfycbwykjEgNadi5xRaOkmHnq8QNXSpwySeoG1y_cOcSjPVVVDpC4ZznaKN_N9qiiDNY9IA2A/exec", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "3Qpage.html"; // ✅ 指定完整檔名
+                } else {
+                    alert("送出失敗，請稍後再試！");
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                    submitBtn.textContent = "送出報名";
+                }
+            })
+            .catch(error => {
+                alert("送出失敗，請檢查網路或服務狀態");
+                console.error("Error:", error);
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+                submitBtn.textContent = "送出報名";
+            });
+    });
+</script>
+
+
 
 </html>

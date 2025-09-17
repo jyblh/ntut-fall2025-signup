@@ -187,22 +187,26 @@
         <h2>二、參與項目</h2>
 
         <div class="inline-group">
-            <label><input type="checkbox" name="參加說明會" value="✅"> 參加企業說明會$18,000【請於備註欄填寫無法參與日期】</label>
-            <label><input type="checkbox" name="參加博覽會" value="✅"> 參加就業博覽會</label>
+            <label><input type="checkbox" id="briefingCheck" name="參加說明會" value="✅">
+                參加企業說明會$18,000【請於備註欄填寫無法參與日期】</label>
+            <label><input type="checkbox" id="expoCheck" name="參加博覽會" value="✅"> 參加就業博覽會</label>
         </div>
 
-        <label>就業博覽會攤位區域（單選）</label>
-        <div class="inline-group">
-            <label><input type="radio" name="攤位區域" value="T字區" required> T字區$27,000</label>
-            <label><input type="radio" name="攤位區域" value="衛星區"> 衛星區$22,000</label>
-            <label><input type="radio" name="攤位區域" value="一大特區"> 一大特區$100,000</label>
+        <div id="expoFields">
+            <label>就業博覽會攤位區域（單選）</label>
+            <div class="inline-group">
+                <label><input type="radio" name="攤位區域" value="T字區"> T字區$27,000</label>
+                <label><input type="radio" name="攤位區域" value="衛星區"> 衛星區$22,000</label>
+                <label><input type="radio" name="攤位區域" value="一大特區"> 一大特區$100,000</label>
+            </div>
+
+            <label for="booths">攤位數量（最多 2 攤）</label>
+            <select id="booths" name="攤位數量">
+                <option value="">請選擇</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
         </div>
-        <label for="booths">攤位數量（最多 2 攤）</label>
-        <select id="booths" name="攤位數量" required>
-            <option value="">請選擇</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-        </select>
 
         <h2>預估金額試算</h2>
         <p class="note">金額僅供參考，最終費用以主辦單位通知為準。</p>
@@ -233,7 +237,7 @@
 
         <h2>四、備註</h2>
         <label for="note">如有其他事項，請填寫：</label>
-        <textarea id="note" name="備註" rows="4"required placeholder="若有參與企業說明會，請填寫無法參與日期"></textarea>
+        <textarea id="note" name="備註" rows="4" required placeholder="若有參與企業說明會，請填寫無法參與日期"></textarea>
 
         <h2>五、注意事項</h2>
         <div style="max-width: 800px; margin: auto; margin-bottom: 32px; text-align: center;">
@@ -274,45 +278,90 @@
 </script>
 
 <script>
-    function calculatePrice() {
-        let total = 0;
+  function setExpoRequired(enabled) {
+    const radios = document.querySelectorAll('input[name="攤位區域"]');
+    const select = document.getElementById("booths");
+    radios.forEach(r => r.required = enabled);
+    select.required = enabled;
+  }
 
-        const isBriefing = document.querySelector('input[name="參加說明會"]:checked') !== null;
-        const isExpo = document.querySelector('input[name="參加博覽會"]:checked') !== null;
-        const selectedArea = document.querySelector('input[name="攤位區域"]:checked');
-        const boothCount = parseInt(document.getElementById("booths").value || 0);
+  function clearExpoFields() {
+    document.querySelectorAll('input[name="攤位區域"]').forEach(r => r.checked = false);
+    document.getElementById("booths").value = "";
+  }
 
-        if (isBriefing) {
-            total += 18000;
-        }
+  function autoCheckExpoIfNeeded() {
+    const expoCheck = document.getElementById("expoCheck");
+    const areaSelected = !!document.querySelector('input[name="攤位區域"]:checked');
+    const boothCount = parseInt(document.getElementById("booths").value || 0);
 
-        if (isExpo && selectedArea && boothCount > 0) {
-            let unitPrice = 0;
-            switch (selectedArea.value) {
-                case "T字區":
-                    unitPrice = 27000;
-                    break;
-                case "衛星區":
-                    unitPrice = 22000;
-                    break;
-                case "一大特區":
-                    unitPrice = 100000;
-                    break;
-            }
-            total += unitPrice * boothCount;
-        }
+    // 只要選了區域或選了攤位數量，就自動勾選博覽會
+    if ((areaSelected || boothCount > 0) && !expoCheck.checked) {
+      expoCheck.checked = true;
+      setExpoRequired(true);
+    }
+  }
 
-        document.getElementById("priceBox").innerText = `總金額：NT$ ${total.toLocaleString()}`;
-        document.getElementById("totalPrice").value = total.toString();
+  function calculatePrice() {
+    let total = 0;
+
+    const isBriefing = document.getElementById("briefingCheck")?.checked || false;
+    const isExpo = document.getElementById("expoCheck")?.checked || false;
+    const selectedArea = document.querySelector('input[name="攤位區域"]:checked');
+    const boothCount = parseInt(document.getElementById("booths").value || 0);
+
+    if (isBriefing) total += 18000;
+
+    // 只有勾選了就業博覽會，且區域+攤位都有選，才加價
+    if (isExpo && selectedArea && boothCount > 0) {
+      let unitPrice = 0;
+      switch (selectedArea.value) {
+        case "T字區": unitPrice = 27000; break;
+        case "衛星區": unitPrice = 22000; break;
+        case "一大特區": unitPrice = 100000; break;
+      }
+      total += unitPrice * boothCount;
     }
 
-    // 綁定事件
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll('input[name="參加說明會"]').forEach(cb => cb.addEventListener("change", calculatePrice));
-        document.querySelectorAll('input[name="參加博覽會"]').forEach(cb => cb.addEventListener("change", calculatePrice));
-        document.querySelectorAll('input[name="攤位區域"]').forEach(rb => rb.addEventListener("change", calculatePrice));
-        document.getElementById("booths").addEventListener("change", calculatePrice);
+    document.getElementById("priceBox").innerText = `總金額：NT$ ${total.toLocaleString()}`;
+    document.getElementById("totalPrice").value = total.toString();
+  }
+
+  function handleExpoToggle() {
+    const expoCheck = document.getElementById("expoCheck");
+    if (expoCheck.checked) {
+      setExpoRequired(true);
+    } else {
+      // 取消勾選 → 清空區域/攤位 & 移除必填
+      setExpoRequired(false);
+      clearExpoFields();
+    }
+    calculatePrice();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const expoCheck = document.getElementById("expoCheck");
+    const briefingCheck = document.getElementById("briefingCheck");
+
+    // 綁定變更事件
+    briefingCheck.addEventListener("change", calculatePrice);
+    expoCheck.addEventListener("change", handleExpoToggle);
+
+    document.querySelectorAll('input[name="攤位區域"]').forEach(rb => {
+      rb.addEventListener("change", () => {
+        autoCheckExpoIfNeeded();
+        calculatePrice();
+      });
     });
+
+    document.getElementById("booths").addEventListener("change", () => {
+      autoCheckExpoIfNeeded();
+      calculatePrice();
+    });
+
+    // 初始化（頁面剛載入時）
+    handleExpoToggle();
+  });
 </script>
 
 <script>

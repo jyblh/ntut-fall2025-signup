@@ -3,45 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>報名成功</title>
+  <title>報名成功｜115 秋季校園徵才系列活動</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: "Noto Sans TC", sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 60px 16px;
-      text-align: center;
+    :root{
+      --black:#070707;
+      --white:#ffffff;
+      --blue:#002dff;
+      --green:#00bf5f;
+      --pink:#f7a2ea;
+      --paper:#fffdf8;
+      --line:#111111;
+      --muted:#626262;
+      --shadow:8px 8px 0 #000;
     }
-    h1 {
-      color: #a14239;
-      font-size: 32px;
-      margin-bottom: 16px;
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:#111;
+      background:
+        radial-gradient(circle at 18px 22px, rgba(255,255,255,.18) 0 1px, transparent 2px) 0 0 / 18px 18px,
+        radial-gradient(circle at 9px 10px, rgba(255,255,255,.10) 0 1px, transparent 2px) 0 0 / 26px 26px,
+        #080808;
+      line-height:1.7;
     }
-    p {
-      font-size: 18px;
-      color: #333;
+    .shell{width:min(980px,calc(100% - 32px));margin:0 auto;padding:28px 0 72px;}
+    .brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:900;letter-spacing:.06em;margin-bottom:22px;text-shadow:2px 2px 0 #000;}
+    .brand-mark{width:42px;height:42px;display:grid;place-items:center;background:var(--blue);border:3px solid #000;border-radius:12px;box-shadow:4px 4px 0 #000;transform:rotate(-4deg);}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border:5px solid #000;
+      border-radius:28px;
+      background:linear-gradient(135deg,var(--blue) 0%,#123dff 52%,var(--pink) 100%);
+      box-shadow:var(--shadow);
+      color:#fff;
+      padding:clamp(28px,5vw,54px);
+      margin-bottom:28px;
     }
-    a.button {
-      display: inline-block;
-      margin-top: 32px;
-      padding: 12px 24px;
-      background-color: #eb6f63;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    a.button:hover {
-      background-color: #14467b;
-    }
+    .hero:before{content:"";position:absolute;width:210px;height:210px;right:-62px;top:-62px;border:10px solid #000;border-radius:42px;transform:rotate(18deg);background:var(--green);opacity:.96;}
+    .hero:after{content:"WHAT'S NEXT?";position:absolute;left:22px;bottom:-18px;font-family:"Archivo Black",Impact,sans-serif;font-size:clamp(46px,10vw,112px);line-height:.85;color:rgba(255,255,255,.12);letter-spacing:-.06em;}
+    .hero-content{position:relative;z-index:1;}
+    .kicker{display:inline-block;background:var(--green);color:#fff;border:3px solid #000;border-radius:999px;padding:8px 16px;font-weight:900;box-shadow:4px 4px 0 #000;margin-bottom:18px;}
+    h1{margin:0;font-size:clamp(34px,6vw,72px);line-height:1;letter-spacing:-.05em;text-shadow:4px 4px 0 #000;}
+    .lead{max-width:720px;margin:18px 0 0;font-size:18px;font-weight:700;color:rgba(255,255,255,.92);}
+    .card{background:var(--paper);border:4px solid #000;border-radius:28px;box-shadow:var(--shadow);overflow:hidden;margin-top:22px;}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--green);color:#fff;border-bottom:4px solid #000;padding:18px 22px;}
+    .card-head h2{margin:0;font-size:24px;letter-spacing:.02em;}
+    .time{font-weight:900;background:#fff;color:#111;border:3px solid #000;border-radius:999px;padding:6px 12px;white-space:nowrap;}
+    .content{padding:24px;}
+    .section-title{display:flex;align-items:center;gap:10px;margin:24px 0 12px;font-size:20px;font-weight:900;}
+    .dot{width:28px;height:28px;border-radius:50%;background:var(--pink);border:3px solid #000;display:inline-grid;place-items:center;font-weight:900;}
+    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .item{border:2px solid #000;border-radius:16px;background:#fff;padding:12px 14px;min-height:72px;}
+    .label{display:block;font-size:13px;font-weight:900;color:var(--muted);margin-bottom:4px;}
+    .value{display:block;font-size:16px;font-weight:800;word-break:break-word;white-space:pre-wrap;}
+    .price{background:#111;color:#fff;border-color:#111;}
+    .price .label{color:#f7a2ea;}.price .value{font-size:24px;color:#00bf5f;}
+    .notice{margin-top:20px;border:3px solid #000;border-radius:20px;background:#fff4fb;padding:18px;font-weight:700;}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border:3px solid #000;border-radius:999px;text-decoration:none;font-weight:900;color:#111;background:#fff;box-shadow:4px 4px 0 #000;cursor:pointer;font:inherit;}
+    .btn.primary{background:var(--blue);color:#fff;}.btn.green{background:var(--green);color:#fff;}
+    @media(max-width:720px){.summary-grid{grid-template-columns:1fr;}.card-head{align-items:flex-start;flex-direction:column;}.shell{width:min(100% - 20px,980px);padding-top:16px;}h1{text-shadow:3px 3px 0 #000;}}
+    @media print{body{background:#fff}.brand,.actions{display:none}.shell{width:100%;padding:0}.hero,.card{box-shadow:none}.hero{color:#111;background:#fff}.hero:after,.hero:before{display:none}}
   </style>
 </head>
 <body>
+  <main class="shell">
+    <div class="brand"><div class="brand-mark">北</div><div>臺北科大產學就業輔導組</div></div>
 
-  <h1>✅ 報名成功！</h1>
-  <p>感謝您的填寫，我們將於近期與您聯繫。</p>
-  <a class="button" href="https://rnd.ntut.edu.tw/p/412-1042-14166.php?">返回首頁</a>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="kicker">報名成功</span>
+        <h1>已收到您的報名資料</h1>
+        <p class="lead">以下為本次送出的報名資訊摘要。系統也會依原流程將資料寫入主辦單位 Google Sheet，後續錄取與繳費資訊請以主辦單位通知為準。</p>
+      </div>
+    </section>
 
+    <section class="card">
+      <div class="card-head">
+        <h2>本次報名資訊摘要</h2>
+        <span class="time" id="submittedAt">送出時間讀取中</span>
+      </div>
+      <div class="content" id="summaryContent">
+        <div class="notice">正在讀取剛剛填寫的資料。</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const storageKey = 'ntutRegistrationSummary';
+    const summary = JSON.parse(sessionStorage.getItem(storageKey) || 'null');
+    const content = document.getElementById('summaryContent');
+    const submittedAt = document.getElementById('submittedAt');
+
+    const escapeHtml = (text) => String(text ?? '')
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;')
+      .replaceAll("'",'&#039;');
+
+    function section(title, no, rows) {
+      const cards = rows.map(([label, value]) => {
+        const isPrice = label.includes('試算金額');
+        return `<div class="item ${isPrice ? 'price' : ''}"><span class="label">${escapeHtml(label)}</span><span class="value">${escapeHtml(value || '未填寫')}</span></div>`;
+      }).join('');
+      return `<div class="section-title"><span class="dot">${no}</span>${escapeHtml(title)}</div><div class="summary-grid">${cards}</div>`;
+    }
+
+    if (!summary) {
+      submittedAt.textContent = '無暫存資料';
+      content.innerHTML = `
+        <div class="notice">此頁沒有讀取到剛剛送出的報名資料。常見原因是直接開啟成功頁、瀏覽器封鎖 sessionStorage，或重新整理後資料已被清除。實際報名資料仍以 Google Sheet 寫入結果為準。</div>
+        <div class="actions"><a class="btn primary" href="./">返回報名頁</a></div>
+      `;
+    } else {
+      submittedAt.textContent = summary.submittedAt || '已送出';
+      content.innerHTML = `
+        ${section('企業基本資料', '一', summary.basic || [])}
+        ${section('參與項目與金額', '二', summary.activity || [])}
+        ${section('其他資訊', '三', summary.other || [])}
+        <div class="notice">提醒：本頁為報名成功後的即時摘要，建議截圖或列印留存。正式錄取、場次安排與繳費金額仍以主辦單位後續通知為準。</div>
+        <div class="actions">
+          <button class="btn green" type="button" onclick="window.print()">列印 / 另存 PDF</button>
+          <a class="btn primary" href="./">返回活動頁</a>
+        </div>
+      `;
+    }
+  </script>
 </body>
 </html>
